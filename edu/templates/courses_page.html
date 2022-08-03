@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}All courses{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>Courses:</h2>
+        <fieldset>
+            <div id="all_courses">
+                {% for c in course_list %}
+                    <div>
+                        <fieldset>
+                            <h4>{{ c.name }}</h4>
+                            {{ c.department }} |
+                            {% if c.first_day == '0' %}
+                                saturday
+                            {% elif c.first_day == '1' %}
+                                sunday
+                            {% elif c.first_day == '2' %}
+                                monday
+                            {% elif c.first_day == '3' %}
+                                tuesday
+                            {% else %}
+                                wednesday
+                            {% endif %}
+                            {% if c.second_day != '7' %}
+                                 &
+                                {% if c.second_day == '0' %}
+                                    saturday
+                                {% elif c.second_day == '1' %}
+                                    sunday
+                                {% elif c.second_day == '2' %}
+                                    monday
+                                {% elif c.second_day == '3' %}
+                                    tuesday
+                                {% else %}
+                                    wednesday
+                                {% endif %}
+                            {% endif %}
+                             | {{ c.start_time }} to {{ c.end_time }}<br>
+                            {{ c.teacher }}
+                        </fieldset>
+                    </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+    {% endblock %}
+</body>
+</html>

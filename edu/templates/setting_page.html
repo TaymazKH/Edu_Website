@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Profile Setting{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>Edit your profile data here:</h2>
+        <fieldset>
+            <form action="{% url 'setting' %}"  method="post" enctype="multipart/form-data">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="Send">
+            </form>
+        </fieldset>
+    {% endblock %}
+</body>
+</html>

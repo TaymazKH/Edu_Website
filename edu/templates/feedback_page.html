@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Contact us{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>Tell us what's on your mind</h2>
+        <fieldset>
+            <form action="{% url 'contactUs' %}"  method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="Send">
+            </form>
+        </fieldset>
+    {% endblock %}
+</body>
+</html>

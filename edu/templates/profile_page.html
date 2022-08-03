@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Profile{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>My profile</h2>
+        <fieldset>
+            <img src={{ request.user.account.profile_picture.url }} alt="" width="150" height="150"><br>
+            Username: <span id="username">{{ request.user.username }}</span><br>
+            First name: <span id="firstname">{{ request.user.first_name }}</span><br>
+            Last name: <span id="lastname">{{ request.user.last_name }}</span><br>
+            Gender: <span id="gender">{{ request.user.account.gender }}</span><br>
+            <fieldset>
+                Bio: <span id="bio">{{ request.user.account.bio }}</span>
+            </fieldset>
+        </fieldset>
+        <a id="setting" href="{% url 'setting' %}">edit profile</a>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Panel{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>User panel</h2>
+        <fieldset>
+            {% if request.user.is_superuser %}
+                <a id="make_new_course" href="{% url 'newCourse' %}">Create new course</a><br>
+            {% endif %}
+            <a id="all_courses" href="{% url 'allCourses' %}">See all courses</a>
+        </fieldset>
+    {% endblock %}
+</body>
+</html>

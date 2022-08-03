@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Login{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>Please login to continue</h2>
+        <fieldset>
+            <form action="{% url 'login' %}"  method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="Login">
+                <div id="error">
+                    {% if wrong %}
+                        <p style="color: red">username or password is wrong!</p>
+                    {% endif %}
+                </div>
+            </form>
+        </fieldset>
+        <p>Don't have an account? <a href="{% url 'register' %}">register</a>!</p>
+    {% endblock %}
+</body>
+</html>

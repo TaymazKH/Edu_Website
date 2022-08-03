@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'edu/style.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <a id="homepage" href="{% url 'home' %}">home</a>
+        <a id="contactus" href="{% url 'contactUs' %}">contact us</a>
+        {% if request.user.is_authenticated %}
+            <a id="profile" href="{% url 'profile' %}">profile</a>
+            <a id="panel" href="{% url 'panel' %}">panel</a>
+            <a id="logout" href="{% url 'logout' %}">logout</a>
+        {% else %}
+            <a id="login" href="{% url 'login' %}">login</a>
+            <a id="register" href="{% url 'register' %}">register</a>
+        {% endif %}
+    </div>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Done{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <div id="done">
+            <h2>Your feedback has been sent!</h2>
+        </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Register{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>Fill the form to signup</h2>
+        <fieldset>
+            <form action="{% url 'register' %}"  method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="Register">
+                <div id="error">
+                    {% if user_exists %}
+                        <p style="color: red">username is taken!</p>
+                    {% endif %}
+                    {% if passwords_not_match %}
+                        <p style="color: red">passwords do not match!</p>
+                    {% endif %}
+                </div>
+            </form>
+        </fieldset>
+        <p>Already have an account? <a href="{% url 'login' %}">login</a>!</p>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}New course{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+        <h2>Fill the form to register new course</h2>
+        <fieldset>
+            <form action="{% url 'newCourse' %}"  method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" name="Create">
+            </form>
+        </fieldset>
+    {% endblock %}
+</body>
+</html>
